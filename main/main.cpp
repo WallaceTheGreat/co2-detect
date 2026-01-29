@@ -8,5 +8,13 @@ extern "C" void app_main(void) {
 
 void Main::init()
 {
-    printf("Watch me fly, mama!\n");
+    print_header();
+}
+
+void Main::print_header()
+{
+    printf("\n=========================================\n");
+    printf("\t%s\n", CO2_PROJECT_NAME);
+    printf("\tVersion: %s (%s)\n", CO2_VER_STRING, CO2_VER_VERBOSE);
+    printf("=========================================\n\n");
 }
