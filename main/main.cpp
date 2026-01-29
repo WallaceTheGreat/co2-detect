@@ -13,8 +13,8 @@ void Main::init()
 
 void Main::print_header()
 {
-    printf("\n=========================================\n");
-    printf("\t%s\n", CO2_PROJECT_NAME);
-    printf("\tVersion: %s (%s)\n", CO2_VER_STRING, CO2_VER_VERBOSE);
-    printf("=========================================\n\n");
+    PRINTF_COLOR(COLOR_BLUE, "\n=========================================\n");
+    PRINTF_COLOR(COLOR_BLUE, "\t%s\n", CO2_PROJECT_NAME);
+    PRINTF_COLOR(COLOR_BLUE, "\tVersion: %s (%s)\n", CO2_VER_STRING, CO2_VER_VERBOSE);
+    PRINTF_COLOR(COLOR_BLUE, "=========================================\n\n");
 }
