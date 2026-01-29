@@ -9,6 +9,8 @@ extern "C" void app_main(void) {
 void Main::init()
 {
     print_header();
+
+    I2c::init();
 }
 
 void Main::print_header()

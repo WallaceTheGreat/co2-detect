@@ -5,6 +5,7 @@
 #include "shared_constants.h"
 
 #include "Utils/utils.h"
+#include "I2c/i2c.h"
 
 class Main
 {
