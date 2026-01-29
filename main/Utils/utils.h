@@ -23,6 +23,11 @@
 		Utils::printf_color(COLOR_DARK_BLUE, "%s: " fmt, _TAG, ##__VA_ARGS__);	\
 	} while (0)
 
+#define DEFAULT_INIT_TAG													\
+	do {																	\
+		Utils::printf_color(COLOR_BLUE, "=> Initializing %s...\n", _TAG);	\
+	} while (0)
+
 class Utils
 {
 public:
