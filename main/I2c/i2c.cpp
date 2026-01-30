@@ -45,7 +45,7 @@ void I2c::init()
 
 	start_app();
 
-	uint8_t meas_mode[2] = { 0x01, 0x10 };
+	uint8_t meas_mode[2] = {0x01, 0x10};
 	i2c_master_transmit(_ccs811_handle, meas_mode, 2, pdMS_TO_TICKS(100));
 
 	vTaskDelay(pdMS_TO_TICKS(1000));
@@ -53,11 +53,13 @@ void I2c::init()
 	PRINTF_COLOR(COLOR_BLUE, "Waiting for first DATA_READY...\n");
 	uint8_t status;
 	constexpr uint8_t status_reg = STATUS_REG;
-	do {
+	do
+	{
 		i2c_master_transmit_receive(_ccs811_handle, &status_reg, 1, &status, 1, pdMS_TO_TICKS(100));
 		PRINTF_COLOR(COLOR_RED, "status register: 0x%02x (DATA_READY = 0x08)\n", status);
 		vTaskDelay(pdMS_TO_TICKS(100));
-	} while (!(status & 0x08));
+	}
+	while (!(status & 0x08));
 	PRINTF_COLOR(COLOR_GREEN, "First measurement ready!\n");
 
 	xTaskCreatePinnedToCore(task_i2c, "i2c_task", 4096, nullptr, 1, nullptr, 1);

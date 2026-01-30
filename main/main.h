@@ -6,6 +6,7 @@
 
 #include "Utils/utils.h"
 #include "I2c/i2c.h"
+#include "Dht//dht22.h"
 
 class Main
 {
