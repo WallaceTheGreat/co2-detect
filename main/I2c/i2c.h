@@ -15,6 +15,7 @@
 #define STATUS_REG 0x00
 #define MEAS_MODE_REG 0x01
 #define ALG_RESULT_REG 0x02
+#define ENV_DATA_REG 0x05
 #define APP_START_REG 0xF4
 
 #define APP_VALID_BIT 0x10
@@ -28,6 +29,7 @@ class I2c
 public:
 	static void init();
 	static bool read_ccs811(uint16_t *eco2, uint16_t *tvoc);
+	static bool write_env_data(float temp, float humidity);
 
 private:
 	static const char *_TAG;

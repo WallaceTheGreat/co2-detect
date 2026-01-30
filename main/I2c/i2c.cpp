@@ -122,6 +122,27 @@ bool I2c::ccs811_check_app_valid()
 	return true;
 }
 
+bool I2c::write_env_data(float temp, float humidity)
+{
+	uint16_t u_temp = (uint16_t)(temp + 25.0f) * 512.0f;
+	uint16_t u_humidity = (uint16_t) humidity * 512.0f;
+
+	uint8_t data[5] = {};
+	data[0] = ENV_DATA_REG;
+	data[1] = u_humidity >> 8;
+	data[2] = u_humidity & 0xFF;
+	data[3] = u_temp >> 8;
+	data[4] = u_temp & 0xFF;
+
+	if (i2c_master_transmit(_ccs811_handle, data, 5, pdMS_TO_TICKS(100)) != ESP_OK)
+	{
+		PRINTF_COLOR(COLOR_RED, "Couldn't write environment data!\n");
+		return false;
+	}
+
+	return true;
+}
+
 bool I2c::start_app()
 {
 	uint8_t app_start = APP_START_REG;
