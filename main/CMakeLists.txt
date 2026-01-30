@@ -3,6 +3,7 @@ idf_component_register(SRCS
         "Utils/utils.cpp"
         "I2c/i2c.cpp"
         "Dht/dht22.cpp"
+        "Measures/measures.cpp"
         REQUIRES mqtt
         REQUIRES esp_driver_i2c
         INCLUDE_DIRS ".")

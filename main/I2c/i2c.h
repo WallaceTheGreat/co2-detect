@@ -21,6 +21,8 @@
 #define DATA_READY_BIT 0x08
 #define FW_MODE_BIT 0x80
 
+#define CCS811_RES_STRING "eCO2: %u ppm, TVOC: %u ppb"
+
 class I2c
 {
 public:
@@ -32,7 +34,6 @@ private:
 	static i2c_master_bus_handle_t _bus_handle;
 	static i2c_master_dev_handle_t _ccs811_handle;
 
-	static void task_i2c(void *pvParameters);
 	static bool ccs811_check_app_valid();
 	static bool start_app();
 };

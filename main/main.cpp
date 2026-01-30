@@ -13,6 +13,7 @@ void Main::init()
 
 	I2c::init();
 	DHT22::init();
+	Measures::init();
 
 	PRINTF_COLOR(COLOR_BLUE, "\n================= Ready =================\n\n");
 }

@@ -61,8 +61,6 @@ void I2c::init()
 	}
 	while (!(status & 0x08));
 	PRINTF_COLOR(COLOR_GREEN, "First measurement ready!\n");
-
-	xTaskCreatePinnedToCore(task_i2c, "i2c_task", 4096, nullptr, 1, nullptr, 1);
 }
 
 bool I2c::read_ccs811(uint16_t *eco2, uint16_t *tvoc)
@@ -146,29 +144,4 @@ bool I2c::start_app()
 	}
 
 	return true;
-}
-
-void I2c::task_i2c(void *pvParameters)
-{
-	PRINTF_COLOR(COLOR_BLUE, "Starting i2c task...\n");
-
-	while (true)
-	{
-		PRINTF_COLOR(COLOR_BLACK, "Reading CCS811...\n");
-
-		uint16_t eco2, tvoc = 0;
-
-		if (!read_ccs811(&eco2, &tvoc))
-		{
-			PRINTF_COLOR(COLOR_RED, "Read operation failed!\n");
-		}
-		else
-		{
-			PRINTF_COLOR(COLOR_GREEN, "eCO2: %u ppm | TVOC: %u ppb\n", eco2, tvoc);
-		}
-
-		vTaskDelay(pdMS_TO_TICKS(3000));
-	}
-
-	vTaskDelete(nullptr);
 }

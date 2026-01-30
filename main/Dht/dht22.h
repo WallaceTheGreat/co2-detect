@@ -10,6 +10,8 @@
 #define DHT_PIN GPIO_NUM_5
 #define DHT_TYPE DHT_TYPE_AM2301
 
+#define DHT_RES_STRING "Temperature: %.1f C, Humidity: %.1f %%"
+
 class DHT22
 {
 public:
